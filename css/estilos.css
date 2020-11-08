@@ -1,0 +1,151 @@
+/* apply a natural box layout model to all elements, but allowing components to change */
+
+html {
+    box-sizing: border-box;
+}
+
+*,
+*:before,
+*:after {
+    box-sizing: inherit;
+}
+
+html {
+    height: 100%;
+    /*para que el degradado quede en toda la pagina*/
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    /* fuente para todo el sitio*/
+    color: #ffffff;
+    /*color de la fuente*/
+    height: 100%;
+    /*para que el degradado quede en toda la pagina*/
+    /* Permalink - use to edit and share this gradient: https://colorzilla.com/gradient-editor/#e570e7+0,c85ec7+49,a849a3+100 */
+    background: #e570e7;
+    /* Old browsers */
+    background: -moz-linear-gradient(top, #e570e7 0%, #c85ec7 49%, #a849a3 100%);
+    /* FF3.6-15 */
+    background: -webkit-linear-gradient(top, #e570e7 0%, #c85ec7 49%, #a849a3 100%);
+    /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(to bottom, #e570e7 0%, #c85ec7 49%, #a849a3 100%);
+    /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid: DXImageTransform.Microsoft.gradient( startColorstr='#e570e7', endColorstr='#a849a3', GradientType=0);
+    /* IE6-9 */
+    background-attachment: fixed;
+    /*para que el degradado quede fijo en toda la pagina*/
+}
+
+header {
+    text-align: center;
+    /*para centrar la imagen del logo*/
+    padding: 40px 0;
+    /*para dar espacio arriba y abajo*/
+}
+
+img {
+    max-width: 100%;
+    /*esto hace que la imagen sea responsiva*/
+}
+
+.contenedor {
+    max-width: 1200px;
+    /*para que la imagen tenga un maximo de 1200px*/
+    margin: 0 auto;
+    /*para centrar la imagen*/
+}
+
+.hero {
+    margin-bottom: 40px;
+    /*agrega separación entre hero y h2*/
+}
+
+h2 {
+    text-align: center;
+    /*alinear texto*/
+    text-transform: uppercase;
+    /*colocar texto en mayusculas para que se vea todo grande*/
+}
+
+.lista-productos {
+    padding: 0;
+    /*para quitar los espacios que genera el navegador por defecto*/
+    list-style: none;
+    /*para quitar el formato de lista y borrar los puntos*/
+}
+
+.lista-productos li {
+    float: left;
+    width: 50%;
+    /*esto hace que se coloquen los productos en dos columnas cuando la pantalla es más chica*/
+    padding: 20px;
+    /*espacio entre cada polera en las 4 direcciones*/
+    text-align: center;
+    /*para centrar los elementos p y boton*/
+}
+
+.lista-productos li:nth-child(2n+1) {
+    clear: both;
+    /*esto limpia el float que es el metodo que estamos usando para que las poleras se vean bien y no se monten ni queden bien cuadradas en el espacio disponible*/
+    /*en este caso el calculo es 2 x 0 + 1, lo que hace que siempre alinee el objeto 1*/
+}
+
+@media (min-width:768px) {
+    .lista-productos li {
+        width: 33.3%;
+        /*para que cuando el tamaño sea más grande se divida en tres columnas*/
+        /*para que esto funcione se debe agregar el snipet de Paul Irish, está arriba en este código*/
+    }
+    .lista-productos li:nth-child(2n+1) {
+        clear: unset;
+        /*acá se resetea el clear both de tamaño pequeño para reescribirlo por el qeu sigue, para tamaño de 3 poleras*/
+    }
+    .lista-productos li:nth-child(3n+1) {
+        clear: both;
+    }
+}
+
+.lista-productos li img {
+    border: 10px solid rgba(128, 1, 195, .45);
+    /* tamaño del borde, tipo de borde, color de borde, transparencia del borde*/
+    transition: border-color .3s ease-in-out;
+    /*esto es para que cuando se haga el hover tenga unos segundos de transición el cambio de color*/
+}
+
+.lista-productos li img:hover {
+    border: 10px solid rgba(128, 1, 195, 1);
+    /*acá es lo mismo que arriba sólo que cambio la intensidad de la transparencia*/
+}
+
+.lista-productos li p {
+    font-size: 28px;
+    font-weight: bold;
+    margin: 10px 0 0 0;
+    /*espacio arriba del parrafo y las demás direcciones cero*/
+}
+
+span.precio {
+    color: #ffce00;
+    font-size: 40px;
+}
+
+.boton {
+    background-color: #ffce00;
+    padding: 10px 40px;
+    /*tamaño del botón*/
+    margin-top: 10px;
+    /*espacio entre botón y texto*/
+    display: inline-block;
+    /*esto permite dar espacio entre botón y texto, sin esto no funciona*/
+    text-transform: uppercase;
+    text-decoration: none;
+    font-weight: bold;
+    color: #8001C3;
+    transition: background-color .3s ease-in-out;
+    /*efecto de cambio color con transición*/
+}
+
+.boton:hover {
+    background-color: #ebbc00;
+}
